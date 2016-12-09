@@ -17,7 +17,7 @@ int main( int argc, char* argv[] ) {
 	 	if ( result	== STBII_RESULT_OK ) {
 			printf( "%ld %ld %s", width, height, stbii_strformat( format )); 
 		} else {
-			printf( "Error code: %d", result );	
+			printf( "Error code: %d, str: %s", result, stbii_strresult( result ));	
 		}
 	}
 	return 0;

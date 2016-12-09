@@ -27,6 +27,7 @@ extern "C" {
 
 extern stbii_result stbii_info( const char *filename, unsigned long int *pwidth, unsigned long int *pheight, stbii_format *pformat );
 extern const char *stbii_strformat( stbii_format format );
+extern const char *stbii_strresult( stbii_result result );
 
 #ifdef __cplusplus
 }
@@ -221,12 +222,23 @@ stbii_result stbii_info( const char *filename, unsigned long int *pwidth, unsign
 
 const char *stbii_strformat( stbii_format format ) {
 	switch ( format ) {
-		case STBII_BMP: return "BMP"; break;
-		case STBII_PNG: return "PNG"; break;
-		case STBII_JPEG: return "JPEG"; break;
-		case STBII_GIF: return "GIF"; break;
-		case STBII_TIFF: return "TIFF"; break;
+		case STBII_BMP: return "BMP";
+		case STBII_PNG: return "PNG";
+		case STBII_JPEG: return "JPEG";
+		case STBII_GIF: return "GIF";
+		case STBII_TIFF: return "TIFF";
 		default: return "UNKNOWN";
+	}
+}
+
+const char *stbii_strresult( stbii_result result ) {
+	switch( result ) {
+		case STBII_RESULT_OK: return "OK";
+		case STBII_RESULT_UNKNOWN_FORMAT: return "UNKNOWN_FORMAT";
+		case STBII_RESULT_FILE_OPEN_ERROR: return "FILE_OPEN_ERROR";
+		case STBII_RESULT_BAD_JPEG_MARKER: return "BAD_JPEG_MARKER";
+		case STBII_RESULT_BAD_TIFF: return "BAD_TIFF";
+		default: return "UNKNOWN_ERROR";
 	}
 }
 

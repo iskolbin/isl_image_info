@@ -12,10 +12,12 @@ int main( int argc, char* argv[] ) {
 	} else {
 		unsigned long int width;
 		unsigned long int height;
+		unsigned int bpp;
 		stbii_format format;
-		stbii_result result = stbii_info( argv[1], &width, &height, &format );
+		stbii_colortype colortype;
+		stbii_result result = stbii_info( argv[1], &width, &height, &format, &bpp, &colortype );
 	 	if ( result	== STBII_RESULT_OK ) {
-			printf( "%ld %ld %s", width, height, stbii_strformat( format )); 
+			printf( "width:%ld height:%ld format:%s bpp:%d colortype:%s", width, height, stbii_strformat( format ), bpp, stbii_strcolortype( colortype ));
 		} else {
 			printf( "Error code: %d, str: %s", result, stbii_strresult( result ));	
 		}

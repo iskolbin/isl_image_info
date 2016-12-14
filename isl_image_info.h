@@ -1,12 +1,12 @@
-#ifndef ISLII_INCLUDE_ISL_IMAGE_INFO_H
-#define ISLII_INCLUDE_ISL_IMAGE_INFO_H
+#ifndef ISL_INCLUDE_ISL_IMAGE_INFO_H
+#define ISL_INCLUDE_ISL_IMAGE_INFO_H
 
-#define ISLII_VERSION 1
+#define ISL_IMAGE_INFO_VERSION 1
 
 #ifdef ISLII_STATIC
-#define ISLIIDEF static
+#define ISLII_DEF static
 #else
-#define ISLIIDEF extern
+#define ISLII_DEF extern
 #endif
 
 typedef enum {
@@ -49,10 +49,10 @@ typedef size_t (*islii_fread)(void *,size_t,size_t,islii_file);
 extern "C" {
 #endif
 
-ISLIIDEF islii_result islii_info( islii_file, islii_fread );
-ISLIIDEF const char *islii_strformat( islii_format format );
-ISLIIDEF const char *islii_strerror( islii_error error );
-ISLIIDEF const char *islii_strcolortype( islii_colortype colortype );
+ISLII_DEF islii_result islii_info( islii_file, islii_fread );
+ISLII_DEF const char *islii_strformat( islii_format format );
+ISLII_DEF const char *islii_strerror( islii_error error );
+ISLII_DEF const char *islii_strcolortype( islii_colortype colortype );
 
 #ifndef ISLII_NO_STDIO
 #include <stdio.h>
@@ -63,7 +63,7 @@ extern islii_result islii_info_file( FILE *f );
 }
 #endif
 
-#endif // ISLII_INCLUDE_ISL_IMAGE_INFO_H
+#endif // ISL_INCLUDE_ISL_IMAGE_INFO_H
 
 
 #ifdef ISL_IMAGE_INFO_IMPLEMENTATION

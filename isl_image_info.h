@@ -51,7 +51,7 @@ extern "C" {
 
 ISLIIDEF islii_result islii_info( islii_file, islii_fread );
 ISLIIDEF const char *islii_strformat( islii_format format );
-ISLIIDEF const char *islii_strresult( islii_result result );
+ISLIIDEF const char *islii_strerror( islii_error error );
 ISLIIDEF const char *islii_strcolortype( islii_colortype colortype );
 
 #ifndef ISLII_NO_STDIO
@@ -230,8 +230,8 @@ const char *islii_strformat( islii_format format ) {
 	}
 }
 
-const char *islii_strerror( islii_error result ) {
-	switch( result ) {
+const char *islii_strerror( islii_error error ) {
+	switch( error ) {
 		case ISLII_ERROR_OK: return "OK";
 		case ISLII_ERROR_UNKNOWN_FORMAT: return "UNKNOWN_FORMAT";
 		case ISLII_ERROR_BAD_FILE: return "BAD_FILE";

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+
+#define ISL_IMAGE_INFO_IMPLEMENTATION
 #include "isl_image_info.h"
 
 int main( int argc, char* argv[] ) {
@@ -12,7 +14,7 @@ int main( int argc, char* argv[] ) {
 		status = 1;
 	} else {
 		FILE *f = fopen( argv[1], "r" );
-		islii_result result = islii_info_stdio( f );
+		islii_result result = islii_info_file( f );
 	 	if ( result.error == ISLII_ERROR_OK ) {
 			printf( "width:%ld height:%ld format:%s bpp:%d colortype:%s", result.width, result.height, islii_strformat( result.format ), result.bpp, islii_strcolortype( result.colortype ));
 		} else {

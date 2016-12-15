@@ -85,27 +85,27 @@ static unsigned char islii__fread_u8( islii_file f, islii_fread read ) {
 }
 
 static unsigned int islii__fread_u16_little( islii_file f, islii_fread read ) {
-	return islii__fread_u8(f,read) + (fread_u8(f,read)<<8);
+	return islii__fread_u8(f,read) + (islii__fread_u8(f,read)<<8);
 }
 
 static unsigned int islii__fread_u32_little( islii_file f, islii_fread read ) {
-	return islii__fread_u8(f,read) + (fread_u8(f,read)<<8) + (fread_u8(f,read)<<16) + (fread_u8(f,read)<<24);
+	return islii__fread_u8(f,read) + (islii__fread_u8(f,read)<<8) + (islii__fread_u8(f,read)<<16) + (islii__fread_u8(f,read)<<24);
 }
 
 static unsigned int islii__fread_u16_big( islii_file f, islii_fread read ) {
-	return (islii__fread_u8(f,read)<<8) + fread_u8(f,read);
+	return (islii__fread_u8(f,read)<<8) + islii__fread_u8(f,read);
 }
 
 static unsigned long int islii__fread_u32_big( islii_file f, islii_fread read ) {
-	return (islii__fread_u8(f,read)<<24) + (fread_u8(f,read)<<16) + (fread_u8(f,read)<<8) + fread_u8(f,read);
+	return (islii__fread_u8(f,read)<<24) + (islii__fread_u8(f,read)<<16) + (islii__fread_u8(f,read)<<8) + islii__fread_u8(f,read);
 }
 
 static unsigned int islii__fread_u16( islii_file f, islii_fread read, int big ) {
-	return big ? islii__fread_u16_big(f,read) : fread_u16_little(f,read);
+	return big ? islii__fread_u16_big(f,read) : islii__fread_u16_little(f,read);
 }
 
 static unsigned long int islii__fread_u32( islii_file f, islii_fread read, int big ) {
-	return big ? islii__fread_u32_big(f,read) : fread_u32_little(f,read);
+	return big ? islii__fread_u32_big(f,read) : islii__fread_u32_little(f,read);
 }
 
 static void fskip( islii_file f, islii_fread read, int count ) {
